@@ -1,0 +1,15 @@
+# Ignore all node_modules directories
+**/node_modules/
+
+# Ignore environment files
+.env
+*.env
+.env*
+
+# Other common ignores for Prettier
+dist/
+build/
+*.min.js
+*.min.css
+package-lock.json
+yarn.lock

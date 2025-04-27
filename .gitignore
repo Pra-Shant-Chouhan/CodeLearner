@@ -1,0 +1,15 @@
+# Ignore all node_modules directories
+**/node_modules/
+
+# Ignore all .env files
+.env
+*.env
+.env*
+
+# Other common ignores for Node.js projects
+.DS_Store
+.idea/
+.vscode/
+dist/
+build/
+*.log
