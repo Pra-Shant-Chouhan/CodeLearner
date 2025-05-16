@@ -20,9 +20,7 @@ export const register = asyncHandler(async (req, res) => {
     if (existingUser) {
          throw new ApiError(400, "User already exists.", []);
     }
-
     const hashedPassword = await bcrypt.hash(password, 10);
-
     const newUser = await db.user.create({
         data: {
             email,
@@ -31,10 +29,11 @@ export const register = asyncHandler(async (req, res) => {
             role: UserRole.USER,
         },
     });
+
     if(!newUser) {
         throw new ApiError(500, "Something went wrong while creating.", []);
     }
-
+    
     const token = jwt.sign({ id: newUser.id }, process.env.JWT_SECRET, {
         expiresIn: "7d",
     });

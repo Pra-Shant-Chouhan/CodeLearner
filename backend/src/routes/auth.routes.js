@@ -3,9 +3,12 @@ import { check, login, logout, register } from "../controllers/auth.controller.j
 
 const authRoutes = Router();
 
-authRoutes.post("/register",register)
-authRoutes.post("/login",login)
-authRoutes.post("/logout",logout)           
-authRoutes.get("/check-email",check)
+authRoutes.post("/register",register);
+
+authRoutes.post("/login",login);
+
+authRoutes.post("/logout",logout); 
+         
+authRoutes.get("/check",check);
 
 export default authRoutes;
