@@ -32,3 +32,10 @@ export const authMiddleware = asyncHandler(async (req, res, next) => {
     req.user = user;
     next();
 })
+
+export const checkIsAdmin = asyncHandler(async(req,res,next)=>{
+ const userId = req.user.id
+ const user = await db.user.findUnique({
+    whe
+ })
+})

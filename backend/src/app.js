@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from "dotenv"
 import AuthRouter from "./routes/auth.routes.js";
+import ProblemRoutes from "./routes/problem.route.js";
 // import connectDB from './db/DB.js';
 import cookiesParser from "cookie-parser"
 dotenv.config({
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(cookiesParser())
 
 app.use('/api/v1/auth', AuthRouter)
+app.use('/api/v1/problems', ProblemRoutes)
 app.get("/",(req,res)=>{
     res.send("Welcome to code learner")
 })
