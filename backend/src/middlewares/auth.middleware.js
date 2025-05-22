@@ -3,13 +3,14 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/apiError.js";
 import { db } from "../libs/db.js"
 export const authMiddleware = asyncHandler(async (req, res, next) => {
-
+    const token = req.cookies.jwt;
     if (!token) {
         throw new ApiError(401, "Unauthorized - No token provided.")
     }
     let decoded
     try {
         decoded = jwt.verify(token, process.env.JWT_SECRET)
+        console.log("decoded",decoded)
     } catch {
         throw new ApiError(401, "Unauthorized - Invalid provided.")
 
@@ -20,7 +21,6 @@ export const authMiddleware = asyncHandler(async (req, res, next) => {
         },
         select: {
             id: true,
-            image: true,
             name: true,
             email: true,
             role: true
@@ -39,11 +39,11 @@ export const checkIsAdmin = asyncHandler(async (req, res, next) => {
         where: {
             id: userId
         },
-        select:{
-            role:true
+        select: {
+            role: true
         }
     })
-    if(!user || user.role !=="ADMIN"){
+    if (!user || user.role !== "ADMIN") {
         throw new ApiError(403, "Forbidden- You don't have permission to access this resource");
     }
     next()
