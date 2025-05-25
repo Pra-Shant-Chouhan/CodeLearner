@@ -5,7 +5,7 @@ import { getJudge0LanguageId, pollBatchResults, submitBatch } from "../libs/judg
 
 export const createProblem = asyncHandler(async (req, res) => {
     // going to get all the data form req.body 
-    // console.log("problems body=", req.body) 
+    console.log("problems body=", req.body) 
     const {
         title,
         description,
